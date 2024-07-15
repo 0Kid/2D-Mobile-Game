@@ -4,6 +4,7 @@ public class ObstacleSpawner : MonoBehaviour
 {
     public GameObject obstaclePrefab;
     public float moveSpeed = 0f;
+    public float yOffset;
     
     void Update() 
     {
@@ -15,8 +16,11 @@ public class ObstacleSpawner : MonoBehaviour
         transform.Translate(Vector2.right * moveSpeed * Time.deltaTime);
     }
     
-    private void OnCollisionEnter2D(Collision2D other) 
+    private void OnCollisionEnter2D(Collision2D collision) 
     {
-        
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            yOffset += 0.42f;
+        }
     }
 }
