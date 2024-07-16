@@ -475,9 +475,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24b9f30206a70ad4285f4fce86e1ca89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  obstaclePrefab: {fileID: 0}
-  moveSpeed: 0
-  yOffset: 3
+  obstaclePrefab: {fileID: 626116529910923864, guid: af540ae460e0aef42ba4f8d6c1174e8a,
+    type: 3}
+  moveSpeed: 2
+  yOffset: 0.42
 --- !u!4 &1324630256 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 626116529910923867, guid: af540ae460e0aef42ba4f8d6c1174e8a,
@@ -794,7 +795,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8043231230393944649, guid: af540ae460e0aef42ba4f8d6c1174e8a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af540ae460e0aef42ba4f8d6c1174e8a, type: 3}
 --- !u!1001 &626116530469289868
 PrefabInstance:
@@ -873,5 +875,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -8043231230393944649, guid: af540ae460e0aef42ba4f8d6c1174e8a, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: af540ae460e0aef42ba4f8d6c1174e8a, type: 3}
