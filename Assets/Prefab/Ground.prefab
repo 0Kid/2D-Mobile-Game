@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 626116529910923867}
   - component: {fileID: 626116529910923866}
   - component: {fileID: 626116529910923865}
+  - component: {fileID: 336138686596638082}
   m_Layer: 0
   m_Name: Ground
   m_TagString: Ground
@@ -26,7 +27,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 626116529910923864}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -2.826, z: 0}
+  m_LocalPosition: {x: -4.03, y: -2.826, z: -1.490464}
   m_LocalScale: {x: 0.112999536, y: 0.018142939, z: 0.03}
   m_Children: []
   m_Father: {fileID: 0}
@@ -108,3 +109,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 20.84, y: 20.84}
   m_EdgeRadius: 0
+--- !u!114 &336138686596638082
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 626116529910923864}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24b9f30206a70ad4285f4fce86e1ca89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  obstaclePrefab: {fileID: 626116529910923864}
+  moveSpeed: 2
+  yOffset: 0.42

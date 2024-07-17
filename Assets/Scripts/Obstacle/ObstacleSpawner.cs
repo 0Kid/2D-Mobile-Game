@@ -21,23 +21,26 @@ public class ObstacleSpawner : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Vector3 spawnPosition;
+            Vector2 spawnPosition;
 
             if (lastSpawnedObject != null)
             {
+                 Debug.Log("Masuk If");
                 // Mengambil posisi objek terakhir yang di-instantiate
-                spawnPosition = lastSpawnedObject.transform.position;
-                // Menambahkan offset pada sumbu Y
-                spawnPosition.y += 0.1f; 
+                spawnPosition = lastSpawnedObject.transform.position; 
+                // Menambahkan offset pada sumbu Y 
+                spawnPosition.y += yOffset; 
             }
             else
             {
+                Debug.Log("Masuk Else");
                 // Jika belum ada objek yang di-instantiate, gunakan posisi default
-                spawnPosition = new Vector3(0, 0, 0);
+                spawnPosition = new Vector2(0, 0);
             }            
             
             // Instantiate objek baru di posisi yang diambil
             lastSpawnedObject = Instantiate(obstaclePrefab, spawnPosition, Quaternion.identity);
+            Debug.Log("Obstacle di-spawn pada posisi: " + spawnPosition);
         }
     }
 }
