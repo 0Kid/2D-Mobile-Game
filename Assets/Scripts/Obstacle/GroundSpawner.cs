@@ -3,10 +3,8 @@
 public class GroundSpawner : MonoBehaviour
 {
     public GameObject platformPrefab;
-    // GameObject yang ditempatkan di posisi spawn kiri
-    public GameObject leftSpawnPoint; 
-    // GameObject yang ditempatkan di posisi spawn kanan
-    public GameObject rightSpawnPoint;
+    public GameObject leftSpawnPoint; // GameObject yang ditempatkan di posisi spawn kiri
+    public GameObject rightSpawnPoint; // GameObject yang ditempatkan di posisi spawn kanan
     public float moveSpeed = 2f;
     public float yOffset = 0.42f;
     private GameObject lastSpawnedPlatform;
@@ -26,8 +24,8 @@ public class GroundSpawner : MonoBehaviour
     void SpawnInitialPlatform()
     {
         Vector2 initialPosition = leftSpawnPoint.transform.position;
-        // Tentukan arah awal (kanan)
-        direction = 1f; 
+        lastSpawnedPlatform = Instantiate(platformPrefab, initialPosition, Quaternion.identity);
+        direction = 1f; // Tentukan arah awal (kanan)
     }
 
     public void SpawnPlatform()
@@ -39,15 +37,13 @@ public class GroundSpawner : MonoBehaviour
         {
             // Spawn dari kiri
             spawnPosition = leftSpawnPoint.transform.position;
-            // Gerak ke kanan
-            direction = 1f; 
+            direction = 1f; // Gerak ke kanan
         }
         else
         {
             // Spawn dari kanan
             spawnPosition = rightSpawnPoint.transform.position;
-            // Gerak ke kiri
-            direction = -1f; 
+            direction = -1f; // Gerak ke kiri
         }
 
         spawnPosition.y = lastSpawnedPlatform != null ? lastSpawnedPlatform.transform.position.y + yOffset : spawnPosition.y;
