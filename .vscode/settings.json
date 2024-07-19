@@ -53,5 +53,6 @@
         "temp/":true,
         "Temp/":true
     },
-    "dotnet.preferCSharpExtension": true
+    "dotnet.preferCSharpExtension": true,
+    "dotnet.defaultSolution": "2D-Mobile-Game.sln"
 }
