@@ -27,6 +27,9 @@ public class PlayerController : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         audioSource = GetComponent<AudioSource>();
+
+        // Mendapatkan referensi ke skrip GameScoreFunction
+        gameScore = FindObjectOfType<GamesScore>();        
     }
 
     void Update()
@@ -55,8 +58,8 @@ public class PlayerController : MonoBehaviour
             // Panggil metode untuk meng-spawn platform baru
             FindObjectOfType<GroundSpawner>().SpawnPlatform();  
             // Tambahkan score
-            score++;
-            UpdateScoreUI();                     
+            gameScore.score++;
+            gameScore.UpdateScoreUI();                     
         }
     }  
 
