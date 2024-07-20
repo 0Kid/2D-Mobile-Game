@@ -21,7 +21,7 @@ public class PlayerController : MonoBehaviour
     public AudioClip landSound;      
 
     // Call function
-    public GamesScore gameScore;
+    private GamesScore gameScore;
 
     void Start()
     {
