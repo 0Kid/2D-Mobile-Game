@@ -5,25 +5,32 @@ using UnityEngine.SceneManagement;
 
 public class LoadingManager : MonoBehaviour
 {
-    // Text UI untuk menampilkan pesan loading
-    public Text loadingText; 
+    // Referensi ke UI Slider
+    public Slider loadingSlider;
     // Nama scene yang akan diload
     public string sceneToLoad; 
 
     void Start()
     {
+        if (string.IsNullOrEmpty(sceneToLoad))
+        {
+            Debug.LogError("Scene to load is not set.");
+            return;
+        }
+        
         StartCoroutine(LoadAsyncScene());
     }
 
     IEnumerator LoadAsyncScene()
     {
-        // Memulai operasi loading secara asinkron
         AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneToLoad);
 
-        // While loop sampai loading selesai
         while (!asyncLoad.isDone)
         {
-            loadingText.text = "Loading... " + (asyncLoad.progress * 100) + "%";
+            if (loadingSlider != null)
+            {
+                loadingSlider.value = asyncLoad.progress;
+            }
             yield return null;
         }
     }
