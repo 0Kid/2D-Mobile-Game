@@ -35,7 +35,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         // Jika 
-        if (Input.GetMouseButtonDown(0) && canJump)
+        if (Input.GetKeyDown(KeyCode.Return) && canJump)
         {
             Jump();
         }
