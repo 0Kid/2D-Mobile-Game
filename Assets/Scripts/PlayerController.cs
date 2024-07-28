@@ -1,11 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
-using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
     // Variable Gameobject
     public GameObject inputObjectUI; 
+    public GameObject scoreTextBool;
 
     // Variable transform
     public float jumpForce = 5f;
@@ -18,12 +18,16 @@ public class PlayerController : MonoBehaviour
 
     // Variable boolean
     private bool canJump = true;
+    bool isGrounded= false;
+    private bool groundSpawned = false;
 
     // Variable audio
     private AudioSource audioSource;  
     public AudioClip jumpSound; 
-    public AudioClip landSound;     
+    public AudioClip landSound;    
 
+    // Variable Animation
+    public Animator animator; 
 
     // Call function
     private GamesScore gameScore;
@@ -34,23 +38,25 @@ public class PlayerController : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         // Mendapatkan referensi ke skrip GameScoreFunction
-        gameScore = FindObjectOfType<GamesScore>();        
+        gameScore = FindObjectOfType<GamesScore>();     
     }
 
     void Update()
     {
-        // Jika 
         if (Input.GetKeyDown(KeyCode.Return) && canJump)
         {
             Jump();
         }
+        animator.SetBool("isJumping", !isGrounded);        
     }
 
     void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        animator.SetFloat("yVelocity", rb.velocity.y);
         // Set status menjadi tidak bisa melompat
-        canJump = false;         
+        canJump = false; 
+        isGrounded = false;        
         StartCoroutine(JumpDelay());
         // Mainkan suara melompat
         PlaySound(jumpSound);        
@@ -58,13 +64,14 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground"))
+        if (collision.gameObject.CompareTag("Ground") && !groundSpawned)
         {
+            groundSpawned = true;
             // Panggil metode untuk meng-spawn platform baru
             FindObjectOfType<GroundSpawner>().SpawnPlatform();  
             // Tambahkan score
             gameScore.score++;
-            gameScore.UpdateScoreUI();                     
+            gameScore.UpdateScoreUI();                   
         }
 
         if (collision.gameObject.CompareTag("Obstacle"))
@@ -74,8 +81,17 @@ public class PlayerController : MonoBehaviour
             inputObjectUI.SetActive(true);
             gameScore.scoreResult = gameScore.score;
             gameScore.UpdateScoreResultUI();
+            // Hide text
+            scoreTextBool.SetActive(false);
         }
     }  
+
+    public void GroundSpawned()
+    {
+        // Reset flag ketika ground baru di-spawn
+        groundSpawned = false;
+        Debug.Log("Masuk Function");
+    }    
 
     private IEnumerator JumpDelay()
     {
@@ -84,7 +100,9 @@ public class PlayerController : MonoBehaviour
         // Izinkan melompat lagi setelah delay
         canJump = true; 
         // Mainkan suara mendarat
-        PlaySound(landSound);         
+        PlaySound(landSound);   
+        isGrounded = true;   
+        animator.SetBool("isJumping", isGrounded);     
     }    
 
     private void PlaySound(AudioClip clip)

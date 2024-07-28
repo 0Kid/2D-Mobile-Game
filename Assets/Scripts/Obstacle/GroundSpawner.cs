@@ -12,15 +12,18 @@ public class GroundSpawner : MonoBehaviour
     private GameObject lastSpawnedPlatform;
     private float direction;
 
+    private GamesScore gameScore;
+
     void Start()
     {
         // Inisialisasi platform pertama di posisi spawn kiri atau kanan
         SpawnInitialPlatform();
+        gameScore = GetComponent<GamesScore>();
     }
 
     void Update()
     {
-        MovePlatform();
+        MovePlatform(); 
     }
 
     void SpawnInitialPlatform()
@@ -53,6 +56,7 @@ public class GroundSpawner : MonoBehaviour
         
         spawnPosition.y = lastSpawnedPlatform != null ? lastSpawnedPlatform.transform.position.y + yOffset : spawnPosition.y;
         lastSpawnedPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+        FindObjectOfType<PlayerController>().GroundSpawned();
     }
 
     void MovePlatform()
