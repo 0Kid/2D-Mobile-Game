@@ -12,4 +12,14 @@ public class LoadScene : MonoBehaviour
     {
         Time.timeScale = 1f;
     }    
+
+    public void ResumeGame()
+    {
+        Time.timeScale = 1f;
+    }
+
+    public void PauseGame()
+    {
+        Time.timeScale = 0f;
+    }
 }

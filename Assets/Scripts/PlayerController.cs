@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SocialPlatforms.Impl;
 
 public class PlayerController : MonoBehaviour
 {
@@ -68,9 +69,11 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.CompareTag("Obstacle"))
         {
-            // Unpause the game
+            // Pause the game
             Time.timeScale = 0f; 
             inputObjectUI.SetActive(true);
+            gameScore.scoreResult = gameScore.score;
+            gameScore.UpdateScoreResultUI();
         }
     }  
 
