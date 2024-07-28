@@ -3,6 +3,9 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour
 {
+    // Variable Gameobject
+    public GameObject inputObjectUI; 
+
     // Variable transform
     public float jumpForce = 5f;
 
@@ -18,7 +21,8 @@ public class PlayerController : MonoBehaviour
     // Variable audio
     private AudioSource audioSource;  
     public AudioClip jumpSound; 
-    public AudioClip landSound;      
+    public AudioClip landSound;     
+
 
     // Call function
     private GamesScore gameScore;
@@ -60,6 +64,13 @@ public class PlayerController : MonoBehaviour
             // Tambahkan score
             gameScore.score++;
             gameScore.UpdateScoreUI();                     
+        }
+
+        if (collision.gameObject.CompareTag("Obstacle"))
+        {
+            // Unpause the game
+            Time.timeScale = 0f; 
+            inputObjectUI.SetActive(true);
         }
     }  
 

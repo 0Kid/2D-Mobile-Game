@@ -7,4 +7,9 @@ public class LoadScene : MonoBehaviour
     {
         SceneManager.LoadScene(nameScene);
     }
+
+    public void RetryGame()
+    {
+        Time.timeScale = 1f;
+    }    
 }

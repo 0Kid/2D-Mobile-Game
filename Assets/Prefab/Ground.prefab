@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 582452699810383325}
   - component: {fileID: 6898130218481614156}
   m_Layer: 0
-  m_Name: GameObject
-  m_TagString: Untagged
+  m_Name: LoseTrigger (1)
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 460546017670402056}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.5361924, y: -0.073093586, z: -27.257965}
+  m_LocalPosition: {x: 2.82, y: -0.31, z: -27.257965}
   m_LocalScale: {x: 1.053945, y: 0.21612407, z: 3.3832533}
   m_Children: []
   m_Father: {fileID: 7705025887428369894}
@@ -46,7 +46,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.73
+  m_Radius: 0.45609528
 --- !u!1 &1810189921633475496
 GameObject:
   m_ObjectHideFlags: 0
@@ -58,8 +58,8 @@ GameObject:
   - component: {fileID: 3016252324194007241}
   - component: {fileID: 8162812581012299409}
   m_Layer: 0
-  m_Name: GameObject (2)
-  m_TagString: Untagged
+  m_Name: LoseTrigger (2)
+  m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -72,7 +72,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1810189921633475496}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.5422182, y: -0.073093586, z: -27.257965}
+  m_LocalPosition: {x: -2.81, y: -0.35, z: -27.257965}
   m_LocalScale: {x: 1.053945, y: 0.21612407, z: 3.3832533}
   m_Children: []
   m_Father: {fileID: 7705025887428369894}
@@ -93,7 +93,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.73
+  m_Radius: 0.4696726
 --- !u!1 &9091366035818646321
 GameObject:
   m_ObjectHideFlags: 0
