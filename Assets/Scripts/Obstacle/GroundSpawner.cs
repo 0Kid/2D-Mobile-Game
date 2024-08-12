@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GroundSpawner : MonoBehaviour
 {
@@ -26,7 +27,7 @@ public class GroundSpawner : MonoBehaviour
         MovePlatform(); 
     }
 
-    void SpawnInitialPlatform()
+    public void SpawnInitialPlatform()
     {
         Vector2 initialPosition = leftSpawnPoint.transform.position;
         lastSpawnedPlatform = Instantiate(platformPrefab, initialPosition, Quaternion.identity);
@@ -56,7 +57,6 @@ public class GroundSpawner : MonoBehaviour
         
         spawnPosition.y = lastSpawnedPlatform != null ? lastSpawnedPlatform.transform.position.y + yOffset : spawnPosition.y;
         lastSpawnedPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
-        FindObjectOfType<PlayerController>().GroundSpawned();
     }
 
     void MovePlatform()

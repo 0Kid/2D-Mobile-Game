@@ -19,7 +19,7 @@ public class PlayerController : MonoBehaviour
     // Variable boolean
     private bool canJump = true;
     bool isGrounded= false;
-    private bool groundSpawned = false;
+    //private bool groundSpawned = false;
 
     // Variable audio
     private AudioSource audioSource;  
@@ -64,9 +64,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Ground") && !groundSpawned)
+        if (collision.gameObject.CompareTag("Ground")) //&& !groundSpawned)
         {
-            groundSpawned = true;
+            //groundSpawned = true;
             // Panggil metode untuk meng-spawn platform baru
             FindObjectOfType<GroundSpawner>().SpawnPlatform();  
             // Tambahkan score
@@ -84,14 +84,14 @@ public class PlayerController : MonoBehaviour
             // Hide text
             scoreTextBool.SetActive(false);
         }
-    }  
+    }   
 
-    public void GroundSpawned()
-    {
-        // Reset flag ketika ground baru di-spawn
-        groundSpawned = false;
-        Debug.Log("Masuk Function");
-    }    
+    //public void GroundSpawned()
+    //{
+    //    // Reset flag ketika ground baru di-spawn
+    //    groundSpawned = false;
+    //    Debug.Log("Masuk Function");
+    //}    
 
     private IEnumerator JumpDelay()
     {

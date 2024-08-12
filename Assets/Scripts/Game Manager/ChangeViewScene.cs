@@ -7,6 +7,6 @@ public class ChangeViewScene : MonoBehaviour
     void Start()
     {
         // Set the resolution to portrait mode
-        Screen.SetResolution(500, 1920, false);
+        Screen.SetResolution(1080, 1920, true);
     }
 }
