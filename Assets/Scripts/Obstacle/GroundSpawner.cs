@@ -10,6 +10,7 @@ public class GroundSpawner : MonoBehaviour
     public GameObject rightSpawnPoint; 
     public float moveSpeed = 2f;
     public float yOffset = 0.42f;
+    public float yOffsetTwo = 0;
     private GameObject lastSpawnedPlatform;
     private float direction;
 
@@ -27,7 +28,7 @@ public class GroundSpawner : MonoBehaviour
         MovePlatform(); 
     }
 
-    public void SpawnInitialPlatform()
+    void SpawnInitialPlatform()
     {
         Vector2 initialPosition = leftSpawnPoint.transform.position;
         lastSpawnedPlatform = Instantiate(platformPrefab, initialPosition, Quaternion.identity);
@@ -57,7 +58,18 @@ public class GroundSpawner : MonoBehaviour
         
         spawnPosition.y = lastSpawnedPlatform != null ? lastSpawnedPlatform.transform.position.y + yOffset : spawnPosition.y;
         lastSpawnedPlatform = Instantiate(platformPrefab, spawnPosition, Quaternion.identity);
+        Debug.Log("Spawned position: " + lastSpawnedPlatform.transform.position.y);
     }
+
+    public void ResetPlatformPosition()
+    {
+        if (lastSpawnedPlatform != null)
+        {
+            Vector3 newPosition = lastSpawnedPlatform.transform.position;
+            newPosition.y = yOffsetTwo;
+            lastSpawnedPlatform.transform.position = newPosition;
+        }
+    }    
 
     void MovePlatform()
     {
